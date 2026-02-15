@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AICodeDocsProjectMemory">
+    <items>
+      <Item>
+        <option name="id" value="o_REAXQ_yP-35xqTnRFXykWaUHA" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordleGame" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordleGame" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;import ru.yandex.practicum.exceptions.WordAlreadyUsedException;&#10;import ru.yandex.practicum.exceptions.WordNotInDictionaryException;&#10;&#10;import java.io.PrintWriter;&#10;import java.util.*;&#10;&#10;public class WordleGame {&#10;    private static final int MAX_STEPS = 6;&#10;    private final WordleDictionary dictionary;&#10;    private final String answer;&#10;    private final List&lt;String&gt; previousGuesses = new ArrayList&lt;&gt;();&#10;    private final PrintWriter logWriter;&#10;    private int steps = MAX_STEPS;&#10;&#10;    private final Set&lt;Character&gt; correctLetters = new HashSet&lt;&gt;();&#10;    private final Map&lt;Integer, Character&gt; correctPositions = new HashMap&lt;&gt;();&#10;    private final Set&lt;Character&gt; excludedLetters = new HashSet&lt;&gt;();&#10;    private final Map&lt;Character, Integer&gt; letterMinCount = new HashMap&lt;&gt;();&#10;&#10;    public WordleGame(WordleDictionary dictionary, PrintWriter logWriter) {&#10;        this.dictionary = dictionary;&#10;        this.answer = dictionary.getRandomWord();&#10;        this.logWriter = logWriter;&#10;    }&#10;&#10;    public String makeGuess(String input) throws WordNotInDictionaryException, WordAlreadyUsedException {&#10;        String guess = normalize(input);&#10;&#10;        if (guess.length() != 5) {&#10;            throw new WordNotInDictionaryException(&quot;Слово должно содержать ровно 5 букв.&quot;);&#10;        }&#10;        if (!dictionary.contains(guess)) {&#10;            throw new WordNotInDictionaryException(&quot;Слово отсутствует в словаре.&quot;);&#10;        }&#10;        if (previousGuesses.contains(guess)) {&#10;            throw new WordAlreadyUsedException(&quot;Вы уже вводили это слово.&quot;);&#10;        }&#10;&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordleGame" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordleGame" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771180404954" />
+        <option name="updatedAt" value="1771180404954" />
+      </Item>
+      <Item>
+        <option name="id" value="vN28gkqNnllR0ed7UPXcAfoC8NY" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.Wordle" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.Wordle" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;import ru.yandex.practicum.exceptions.DictionaryLoadException;&#10;import ru.yandex.practicum.exceptions.EmptyDictionaryException;&#10;import ru.yandex.practicum.exceptions.WordAlreadyUsedException;&#10;import ru.yandex.practicum.exceptions.WordNotInDictionaryException;&#10;&#10;import java.io.FileWriter;&#10;import java.io.IOException;&#10;import java.io.PrintWriter;&#10;import java.util.Scanner;&#10;&#10;public class Wordle {&#10;&#10;    public static void main(String[] args) {&#10;        try (PrintWriter logWriter = new PrintWriter(new FileWriter(&quot;game.log&quot;))) {&#10;            WordleDictionaryLoader loader = new WordleDictionaryLoader(logWriter);&#10;            WordleDictionary dictionary;&#10;&#10;            try {&#10;                dictionary = loader.loadDictionary(&quot;words_ru.txt&quot;);&#10;            } catch (DictionaryLoadException | EmptyDictionaryException e) {&#10;                System.err.println(&quot;Ошибка инициализации игры: &quot; + e.getMessage());&#10;                logWriter.println(&quot;Ошибка инициализации игры: &quot; + e.getMessage());&#10;                return;&#10;            }&#10;&#10;            WordleGame game = new WordleGame(dictionary, logWriter);&#10;&#10;            Scanner scanner = new Scanner(System.in);&#10;            System.out.println(&quot;Добро пожаловать в игру Wordle!&quot;);&#10;            System.out.println(&quot;Введите слово из 5 букв или нажмите Enter для подсказки.&quot;);&#10;&#10;            while (!game.isGameOver()) {&#10;                System.out.print(&quot;&gt; &quot;);&#10;                String input = scanner.nextLine().trim();&#10;&#10;                if (input.isEmpty()) {&#10;                    System.out.println(&quot;Подсказка: &quot; + game.getHint());&#10;                    continue;&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.Wordle" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.Wordle" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771180452536" />
+        <option name="updatedAt" value="1771180452536" />
+      </Item>
+      <Item>
+        <option name="id" value="1gMz41RHxtYZd8ZvxGrTUKr8kDg" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordleDictionary" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordleDictionary" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;import java.util.ArrayList;&#10;import java.util.List;&#10;import java.util.Random;&#10;&#10;public class WordleDictionary {&#10;    private final List&lt;String&gt; words = new ArrayList&lt;&gt;();&#10;    private static final Random RANDOM = new Random();&#10;&#10;    public void addWord(String word) {&#10;        String normalized = normalize(word);&#10;        if (normalized.length() != 5) {&#10;            return; // игнорируем слова не из 5 букв&#10;        }&#10;        if (!words.contains(normalized)) {&#10;            words.add(normalized);&#10;        }&#10;    }&#10;&#10;    public boolean contains(String word) {&#10;        return words.contains(normalize(word));&#10;    }&#10;&#10;    public String getRandomWord() {&#10;        return words.get(RANDOM.nextInt(words.size()));&#10;    }&#10;&#10;    public List&lt;String&gt; filterWords(List&lt;String&gt; guesses) {&#10;        List&lt;String&gt; result = new ArrayList&lt;&gt;();&#10;        for (String word : words) {&#10;            boolean matches = true;&#10;            for (String guess : guesses) {&#10;                if (!matchesFeedback(word, guess)) {&#10;                    matches = false;&#10;                    break;&#10;                }&#10;            }&#10;            if (matches) {&#10;                result.add(word);&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordleDictionary" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordleDictionary" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771180877089" />
+        <option name="updatedAt" value="1771180877089" />
+      </Item>
+      <Item>
+        <option name="id" value="-Z5vH5b8SUX98CRpo8PyUxH4PdI" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordNotFoundException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordNotFoundException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;public class WordNotFoundException extends RuntimeException {&#10;    public WordNotFoundException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordNotFoundException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordNotFoundException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177597056" />
+        <option name="updatedAt" value="1771177597056" />
+      </Item>
+      <Item>
+        <option name="id" value="gv1mTUW4W3sykyb4SWuXbq7PPCQ" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:WordNotFoundException" />
+        <option name="title" value="Auto summary: WordNotFoundException" />
+        <option name="text" value="```&#10;public class WordNotFoundException extends RuntimeException {&#10;    public WordNotFoundException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:WordNotFoundException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="WordNotFoundException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177563274" />
+        <option name="updatedAt" value="1771177563274" />
+      </Item>
+      <Item>
+        <option name="id" value="BuaW6yZ-TshJOfqC5k_o29g0V-E" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordNotInDictionaryException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordNotInDictionaryException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;public class WordNotInDictionaryException extends Exception {&#10;    public WordNotInDictionaryException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordNotInDictionaryException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordNotInDictionaryException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177606835" />
+        <option name="updatedAt" value="1771177606835" />
+      </Item>
+      <Item>
+        <option name="id" value="LUpyA8t56KNh0GM-nFmeA_Hk5NM" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordAlreadyUsedException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordAlreadyUsedException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;public class WordAlreadyUsedException extends Exception {&#10;    public WordAlreadyUsedException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordAlreadyUsedException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordAlreadyUsedException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177646608" />
+        <option name="updatedAt" value="1771177646608" />
+      </Item>
+      <Item>
+        <option name="id" value="oPWixuNTx-ncMlsT0yjsCapTsfE" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.DictionaryLoadException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.DictionaryLoadException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;public class DictionaryLoadException extends Exception {&#10;    public DictionaryLoadException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.DictionaryLoadException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.DictionaryLoadException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177677347" />
+        <option name="updatedAt" value="1771177677347" />
+      </Item>
+      <Item>
+        <option name="id" value="PaUfms1x3DlA0L1BGTqlGrSTuBo" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.EmptyDictionaryException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.EmptyDictionaryException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;public class EmptyDictionaryException extends Exception {&#10;    public EmptyDictionaryException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.EmptyDictionaryException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.EmptyDictionaryException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177708341" />
+        <option name="updatedAt" value="1771177708341" />
+      </Item>
+      <Item>
+        <option name="id" value="i-BfJ8PCp9jj-n0JTgnHjvqBM7s" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.Exceptions" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.Exceptions" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;public class Exceptions {&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.Exceptions" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.Exceptions" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177741532" />
+        <option name="updatedAt" value="1771177741532" />
+      </Item>
+      <Item>
+        <option name="id" value="jqd1R6AkU5oyktQXZd65FWX4YJ8" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.exceptions.DictionaryLoadException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.exceptions.DictionaryLoadException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum.exceptions;&#10;&#10;public class DictionaryLoadException extends Exception {&#10;    public DictionaryLoadException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.exceptions.DictionaryLoadException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.exceptions.DictionaryLoadException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177780138" />
+        <option name="updatedAt" value="1771177780138" />
+      </Item>
+      <Item>
+        <option name="id" value="o97bOJj5W0rYUnkicsozex2EDus" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.exceptions.EmptyDictionaryException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.exceptions.EmptyDictionaryException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum.exceptions;&#10;&#10;public class EmptyDictionaryException extends Exception {&#10;    public EmptyDictionaryException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.exceptions.EmptyDictionaryException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.exceptions.EmptyDictionaryException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177784343" />
+        <option name="updatedAt" value="1771177784343" />
+      </Item>
+      <Item>
+        <option name="id" value="hdb0TnKLs3BECoVElJvrEq0lon4" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.exceptions.InvalidWordException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.exceptions.InvalidWordException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum.exceptions;&#10;&#10;public class InvalidWordException extends Exception {&#10;    public InvalidWordException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.exceptions.InvalidWordException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.exceptions.InvalidWordException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771179611988" />
+        <option name="updatedAt" value="1771179611988" />
+      </Item>
+      <Item>
+        <option name="id" value="5m4s2PIIsMMPgTbj0sACVdxUbOU" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.exceptions.WordAlreadyUsedException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.exceptions.WordAlreadyUsedException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum.exceptions;&#10;&#10;public class WordAlreadyUsedException extends Exception {&#10;    public WordAlreadyUsedException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.exceptions.WordAlreadyUsedException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.exceptions.WordAlreadyUsedException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177793067" />
+        <option name="updatedAt" value="1771177793067" />
+      </Item>
+      <Item>
+        <option name="id" value="xQlBBZM09bug_2GfW1a3jiOaMQ4" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.exceptions.WordNotFoundException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.exceptions.WordNotFoundException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum.exceptions;&#10;&#10;public class WordNotFoundException extends RuntimeException {&#10;    public WordNotFoundException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.exceptions.WordNotFoundException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.exceptions.WordNotFoundException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177797342" />
+        <option name="updatedAt" value="1771177797342" />
+      </Item>
+      <Item>
+        <option name="id" value="tsgcUvpsdBXb3l4a_7GoyDJGlno" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.exceptions.WordNotInDictionaryException" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.exceptions.WordNotInDictionaryException" />
+        <option name="text" value="```&#10;package ru.yandex.practicum.exceptions;&#10;&#10;public class WordNotInDictionaryException extends Exception {&#10;    public WordNotInDictionaryException(String message) {&#10;        super(message);&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.exceptions.WordNotInDictionaryException" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.exceptions.WordNotInDictionaryException" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771177802347" />
+        <option name="updatedAt" value="1771177802347" />
+      </Item>
+      <Item>
+        <option name="id" value="k2q4bdWD_Bn2iTwYMuys_Ypmo6U" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordleGameTest" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordleGameTest" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;import org.junit.jupiter.api.BeforeEach;&#10;import org.junit.jupiter.api.Test;&#10;import ru.yandex.practicum.exceptions.WordAlreadyUsedException;&#10;import ru.yandex.practicum.exceptions.WordNotInDictionaryException;&#10;&#10;import java.io.PrintWriter;&#10;import java.io.StringWriter;&#10;&#10;import static org.junit.jupiter.api.Assertions.*;&#10;&#10;class WordleGameTest {&#10;&#10;    private WordleDictionary dictionary;&#10;    private StringWriter stringWriter;&#10;    private PrintWriter logWriter;&#10;&#10;    @BeforeEach&#10;    void setUp() {&#10;        dictionary = new WordleDictionary();&#10;        dictionary.addWord(&quot;герой&quot;);&#10;&#10;        stringWriter = new StringWriter();&#10;        logWriter = new PrintWriter(stringWriter);&#10;    }&#10;&#10;    @Test&#10;    void testCorrectGuess() throws WordAlreadyUsedException, WordNotInDictionaryException {&#10;        WordleGame game = new WordleGame(dictionary, logWriter);&#10;        game.makeGuess(&quot;герой&quot;);&#10;&#10;        assertTrue(game.isPlayerWon());&#10;    }&#10;&#10;    @Test&#10;    void testInvalidWordLength() {&#10;        WordleGame game = new WordleGame(dictionary, logWriter);&#10;&#10;        assertThrows(WordNotInDictionaryException.class, () -&gt; game.makeGuess(&quot;дом&quot;));&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordleGameTest" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordleGameTest" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771180744648" />
+        <option name="updatedAt" value="1771180744648" />
+      </Item>
+      <Item>
+        <option name="id" value="WV0IEwB0kCnleAQETILN2m-phqQ" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordleDictionaryLoader" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordleDictionaryLoader" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;import ru.yandex.practicum.exceptions.DictionaryLoadException;&#10;import ru.yandex.practicum.exceptions.EmptyDictionaryException;&#10;&#10;import java.io.*;&#10;import java.nio.charset.StandardCharsets;&#10;&#10;public class WordleDictionaryLoader {&#10;    private final PrintWriter logWriter;&#10;&#10;    public WordleDictionaryLoader(PrintWriter logWriter) {&#10;        this.logWriter = logWriter;&#10;    }&#10;&#10;    public WordleDictionary loadDictionary(String filename) throws DictionaryLoadException, EmptyDictionaryException {&#10;        WordleDictionary dictionary = new WordleDictionary();&#10;&#10;        try (BufferedReader reader = new BufferedReader(&#10;                new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8))) {&#10;&#10;            String line;&#10;            while ((line = reader.readLine()) != null) {&#10;                line = line.trim();&#10;                if (line.length() == 5) {&#10;                    dictionary.addWord(line);&#10;                }&#10;            }&#10;&#10;            if (dictionary.isEmpty()) {&#10;                String msg = &quot;Словарь пуст.&quot;;&#10;                logWriter.println(msg);&#10;                throw new EmptyDictionaryException(msg);&#10;            }&#10;&#10;            logWriter.println(&quot;Загружено &quot; + dictionary.size() + &quot; слов из файла: &quot; + filename);&#10;            return dictionary;&#10;&#10;        } catch (IOException e) {&#10;            String msg = &quot;Ошибка загрузки словаря: &quot; + e.getMessage();&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordleDictionaryLoader" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordleDictionaryLoader" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771180423707" />
+        <option name="updatedAt" value="1771180423707" />
+      </Item>
+      <Item>
+        <option name="id" value="Z1ABY_Tu4PHtxU2P7Vf4363RKqs" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.Predicate" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.Predicate" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;@FunctionalInterface&#10;public interface Predicate&lt;T&gt; {&#10;    boolean test(T t);&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.Predicate" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.Predicate" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771178577668" />
+        <option name="updatedAt" value="1771178577668" />
+      </Item>
+      <Item>
+        <option name="id" value="JBNmT-gxNk6DTpSoOOx3k7HQJio" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordleDictionaryTest" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordleDictionaryTest" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;import org.junit.jupiter.api.Test;&#10;&#10;import java.util.ArrayList;&#10;import java.util.List;&#10;&#10;import static org.junit.jupiter.api.Assertions.*;&#10;&#10;class WordleDictionaryTest {&#10;&#10;    @Test&#10;    void testNormalizeWord() {&#10;        WordleDictionary dict = new WordleDictionary();&#10;        assertEquals(&quot;привет&quot;, dict.normalize(&quot;Привет&quot;));&#10;        assertEquals(&quot;привет&quot;, dict.normalize(&quot;привёт&quot;));&#10;    }&#10;&#10;    @Test&#10;    void testFilterWords() {&#10;        WordleDictionary dict = new WordleDictionary();&#10;        dict.addWord(&quot;кошка&quot;);&#10;        dict.addWord(&quot;кость&quot;);&#10;        dict.addWord(&quot;ёлка&quot;);&#10;&#10;        List&lt;String&gt; guesses = new ArrayList&lt;&gt;();&#10;        guesses.add(&quot;кошка&quot;);&#10;        guesses.add(&quot;кость&quot;);&#10;&#10;        List&lt;String&gt; filtered = dict.filterWords(guesses);&#10;&#10;        assertNotNull(filtered);&#10;        assertTrue(filtered.contains(&quot;кошка&quot;) || filtered.contains(&quot;кость&quot;) || filtered.contains(&quot;ёлка&quot;));&#10;    }&#10;}&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordleDictionaryTest" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordleDictionaryTest" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771180761165" />
+        <option name="updatedAt" value="1771180761165" />
+      </Item>
+      <Item>
+        <option name="id" value="xIU5tVpTRtkA0-zeRQipslMSoVg" />
+        <option name="userId" value="d.v.generalov" />
+        <option name="projectId" value="80e9651e" />
+        <option name="scope" value="ENTITY" />
+        <option name="kind" value="ENTITY_SUMMARY" />
+        <option name="key" value="entity:ru.yandex.practicum.WordleDictionaryLoaderTest" />
+        <option name="title" value="Auto summary: ru.yandex.practicum.WordleDictionaryLoaderTest" />
+        <option name="text" value="```&#10;package ru.yandex.practicum;&#10;&#10;import org.junit.jupiter.api.Test;&#10;import ru.yandex.practicum.exceptions.DictionaryLoadException;&#10;import ru.yandex.practicum.exceptions.EmptyDictionaryException;&#10;&#10;import java.io.BufferedWriter;&#10;import java.io.IOException;&#10;import java.io.PrintWriter;&#10;import java.io.StringWriter;&#10;import java.nio.file.Files;&#10;import java.nio.file.Path;&#10;&#10;import static org.junit.jupiter.api.Assertions.*;&#10;&#10;class WordleDictionaryLoaderTest {&#10;&#10;    private final StringWriter stringWriter = new StringWriter();&#10;    private final PrintWriter logWriter = new PrintWriter(stringWriter);&#10;&#10;    @Test&#10;    void testLoadDictionaryFromFile() throws IOException, EmptyDictionaryException, DictionaryLoadException {&#10;        Path tempFile = Files.createTempFile(&quot;test_dict_&quot;, &quot;.txt&quot;);&#10;        try (BufferedWriter writer = Files.newBufferedWriter(tempFile)) {&#10;            writer.write(&quot;полёт\n&quot;);&#10;        }&#10;&#10;        WordleDictionaryLoader loader = new WordleDictionaryLoader(logWriter);&#10;        WordleDictionary dict = loader.loadDictionary(tempFile.toString());&#10;&#10;        assertNotNull(dict);&#10;        assertEquals(1, dict.size());&#10;        assertTrue(dict.contains(&quot;полет&quot;));&#10;    }&#10;&#10;    @Test&#10;    void testLoadNonExistentFile() {&#10;        WordleDictionaryLoader loader = new WordleDictionaryLoader(logWriter);&#10;&#10;        assertThrows(DictionaryLoadException.class, () -&gt; loader.loadDictionary(&quot;nonexistent_file.txt&quot;));&#10;```" />
+        <option name="slug" value="entity:ru.yandex.practicum.WordleDictionaryLoaderTest" />
+        <option name="meta">
+          <map>
+            <entry key="fqId" value="ru.yandex.practicum.WordleDictionaryLoaderTest" />
+            <entry key="tags" value="entity,summary" />
+          </map>
+        </option>
+        <option name="createdAt" value="1771180783674" />
+        <option name="updatedAt" value="1771180783674" />
+      </Item>
+    </items>
+  </component>
+</project>

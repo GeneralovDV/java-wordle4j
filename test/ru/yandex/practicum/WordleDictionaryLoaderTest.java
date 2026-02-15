@@ -1,6 +1,8 @@
 package ru.yandex.practicum;
 
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.exceptions.DictionaryLoadException;
+import ru.yandex.practicum.exceptions.EmptyDictionaryException;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,7 +11,7 @@ import java.io.StringWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class WordleDictionaryLoaderTest {
 
@@ -17,7 +19,7 @@ class WordleDictionaryLoaderTest {
     private final PrintWriter logWriter = new PrintWriter(stringWriter);
 
     @Test
-    void testLoadDictionaryFromFile() throws IOException {
+    void testLoadDictionaryFromFile() throws IOException, EmptyDictionaryException, DictionaryLoadException {
         Path tempFile = Files.createTempFile("test_dict_", ".txt");
         try (BufferedWriter writer = Files.newBufferedWriter(tempFile)) {
             writer.write("полёт\n");
@@ -34,9 +36,7 @@ class WordleDictionaryLoaderTest {
     @Test
     void testLoadNonExistentFile() {
         WordleDictionaryLoader loader = new WordleDictionaryLoader(logWriter);
-        WordleDictionary dict = loader.loadDictionary("nonexistent_file.txt");
 
-        assertNotNull(dict);
-        assertTrue(dict.isEmpty());
+        assertThrows(DictionaryLoadException.class, () -> loader.loadDictionary("nonexistent_file.txt"));
     }
 }

@@ -1,14 +1,23 @@
 package ru.yandex.practicum;
 
+import ru.yandex.practicum.exceptions.WordAlreadyUsedException;
+import ru.yandex.practicum.exceptions.WordNotInDictionaryException;
+
 import java.io.PrintWriter;
 import java.util.*;
 
 public class WordleGame {
+    private static final int MAX_STEPS = 6;
     private final WordleDictionary dictionary;
     private final String answer;
     private final List<String> previousGuesses = new ArrayList<>();
     private final PrintWriter logWriter;
-    private int steps = 6;
+    private int steps = MAX_STEPS;
+
+    private final Set<Character> correctLetters = new HashSet<>();
+    private final Map<Integer, Character> correctPositions = new HashMap<>();
+    private final Set<Character> excludedLetters = new HashSet<>();
+    private final Map<Character, Integer> letterMinCount = new HashMap<>();
 
     public WordleGame(WordleDictionary dictionary, PrintWriter logWriter) {
         this.dictionary = dictionary;
@@ -16,17 +25,17 @@ public class WordleGame {
         this.logWriter = logWriter;
     }
 
-    public String makeGuess(String input) throws InvalidWordException {
+    public String makeGuess(String input) throws WordNotInDictionaryException, WordAlreadyUsedException {
         String guess = normalize(input);
 
         if (guess.length() != 5) {
-            throw new InvalidWordException("Слово должно содержать ровно 5 букв.");
+            throw new WordNotInDictionaryException("Слово должно содержать ровно 5 букв.");
         }
         if (!dictionary.contains(guess)) {
-            throw new InvalidWordException("Слово отсутствует в словаре.");
+            throw new WordNotInDictionaryException("Слово отсутствует в словаре.");
         }
         if (previousGuesses.contains(guess)) {
-            throw new InvalidWordException("Вы уже вводили это слово.");
+            throw new WordAlreadyUsedException("Вы уже вводили это слово.");
         }
 
         previousGuesses.add(guess);
@@ -35,8 +44,7 @@ public class WordleGame {
         StringBuilder feedback = new StringBuilder();
         char[] guessChars = guess.toCharArray();
         char[] answerChars = answer.toCharArray();
-
-        boolean[] used = new boolean[answer.length()];
+        boolean[] used = new boolean[5];
 
         for (int i = 0; i < 5; i++) {
             if (guessChars[i] == answerChars[i]) {
@@ -66,7 +74,36 @@ public class WordleGame {
 
         String resultStr = new String(result);
         logWriter.println("Попытка: " + guess + " → " + resultStr);
+        updateGameState(guess, resultStr);
         return resultStr;
+    }
+
+    private void updateGameState(String guess, String feedbackStr) {
+        char[] guessChars = guess.toCharArray();
+        char[] feedbackChars = feedbackStr.toCharArray();
+
+        Map<Character, Integer> letterCount = new HashMap<>();
+
+        for (int i = 0; i < 5; i++) {
+            if (feedbackChars[i] == '+') {
+                correctPositions.put(i, guessChars[i]);
+                correctLetters.add(guessChars[i]);
+                letterCount.put(guessChars[i], letterCount.getOrDefault(guessChars[i], 0) + 1);
+            } else if (feedbackChars[i] == '^') {
+                correctLetters.add(guessChars[i]);
+                letterCount.put(guessChars[i], letterCount.getOrDefault(guessChars[i], 0) + 1);
+            }
+        }
+
+        for (Map.Entry<Character, Integer> entry : letterCount.entrySet()) {
+            letterMinCount.put(entry.getKey(), Math.max(letterMinCount.getOrDefault(entry.getKey(), 0), entry.getValue()));
+        }
+
+        for (int i = 0; i < 5; i++) {
+            if (feedbackChars[i] == '-') {
+                excludedLetters.add(guessChars[i]);
+            }
+        }
     }
 
     public boolean isGameOver() {

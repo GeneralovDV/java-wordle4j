@@ -2,11 +2,13 @@ package ru.yandex.practicum;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.yandex.practicum.exceptions.WordAlreadyUsedException;
+import ru.yandex.practicum.exceptions.WordNotInDictionaryException;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class WordleGameTest {
 
@@ -24,7 +26,7 @@ class WordleGameTest {
     }
 
     @Test
-    void testCorrectGuess() throws InvalidWordException {
+    void testCorrectGuess() throws WordAlreadyUsedException, WordNotInDictionaryException {
         WordleGame game = new WordleGame(dictionary, logWriter);
         game.makeGuess("герой");
 
@@ -35,13 +37,21 @@ class WordleGameTest {
     void testInvalidWordLength() {
         WordleGame game = new WordleGame(dictionary, logWriter);
 
-        assertThrows(InvalidWordException.class, () -> game.makeGuess("дом"));
+        assertThrows(WordNotInDictionaryException.class, () -> game.makeGuess("дом"));
     }
 
     @Test
     void testInvalidWordNotInDictionary() {
         WordleGame game = new WordleGame(dictionary, logWriter);
 
-        assertThrows(InvalidWordException.class, () -> game.makeGuess("слово"));
+        assertThrows(WordNotInDictionaryException.class, () -> game.makeGuess("слово"));
+    }
+
+    @Test
+    void testWordAlreadyUsed() throws WordNotInDictionaryException, WordAlreadyUsedException {
+        WordleGame game = new WordleGame(dictionary, logWriter);
+
+        game.makeGuess("герой");
+        assertThrows(WordAlreadyUsedException.class, () -> game.makeGuess("герой"));
     }
 }

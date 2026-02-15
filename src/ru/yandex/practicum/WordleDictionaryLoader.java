@@ -1,10 +1,9 @@
 package ru.yandex.practicum;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import ru.yandex.practicum.exceptions.DictionaryLoadException;
+import ru.yandex.practicum.exceptions.EmptyDictionaryException;
+
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class WordleDictionaryLoader {
@@ -14,7 +13,7 @@ public class WordleDictionaryLoader {
         this.logWriter = logWriter;
     }
 
-    public WordleDictionary loadDictionary(String filename) {
+    public WordleDictionary loadDictionary(String filename) throws DictionaryLoadException, EmptyDictionaryException {
         WordleDictionary dictionary = new WordleDictionary();
 
         try (BufferedReader reader = new BufferedReader(
@@ -27,10 +26,20 @@ public class WordleDictionaryLoader {
                     dictionary.addWord(line);
                 }
             }
+
+            if (dictionary.isEmpty()) {
+                String msg = "Словарь пуст.";
+                logWriter.println(msg);
+                throw new EmptyDictionaryException(msg);
+            }
+
             logWriter.println("Загружено " + dictionary.size() + " слов из файла: " + filename);
+            return dictionary;
+
         } catch (IOException e) {
-            logWriter.println("Ошибка загрузки словаря: " + e.getMessage());
+            String msg = "Ошибка загрузки словаря: " + e.getMessage();
+            logWriter.println(msg);
+            throw new DictionaryLoadException(msg);
         }
-        return dictionary;
     }
 }

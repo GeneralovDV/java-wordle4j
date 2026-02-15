@@ -1,5 +1,10 @@
 package ru.yandex.practicum;
 
+import ru.yandex.practicum.exceptions.DictionaryLoadException;
+import ru.yandex.practicum.exceptions.EmptyDictionaryException;
+import ru.yandex.practicum.exceptions.WordAlreadyUsedException;
+import ru.yandex.practicum.exceptions.WordNotInDictionaryException;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,11 +15,13 @@ public class Wordle {
     public static void main(String[] args) {
         try (PrintWriter logWriter = new PrintWriter(new FileWriter("game.log"))) {
             WordleDictionaryLoader loader = new WordleDictionaryLoader(logWriter);
-            WordleDictionary dictionary = loader.loadDictionary("words_ru.txt");
+            WordleDictionary dictionary;
 
-            if (dictionary.isEmpty()) {
-                logWriter.println("Словарь пуст.");
-                System.err.println("Ошибка: словарь пуст.");
+            try {
+                dictionary = loader.loadDictionary("words_ru.txt");
+            } catch (DictionaryLoadException | EmptyDictionaryException e) {
+                System.err.println("Ошибка инициализации игры: " + e.getMessage());
+                logWriter.println("Ошибка инициализации игры: " + e.getMessage());
                 return;
             }
 
@@ -36,7 +43,7 @@ public class Wordle {
                 try {
                     String result = game.makeGuess(input);
                     System.out.println(result);
-                } catch (InvalidWordException e) {
+                } catch (WordNotInDictionaryException | WordAlreadyUsedException e) {
                     System.out.println(e.getMessage());
                     logWriter.println("Ошибка ввода: " + e.getMessage());
                 }

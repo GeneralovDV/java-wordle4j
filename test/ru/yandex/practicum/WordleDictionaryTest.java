@@ -2,9 +2,10 @@ package ru.yandex.practicum;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class WordleDictionaryTest {
 
@@ -22,9 +23,13 @@ class WordleDictionaryTest {
         dict.addWord("кость");
         dict.addWord("ёлка");
 
-        List<String> guesses = List.of("кошка", "кость");
+        List<String> guesses = new ArrayList<>();
+        guesses.add("кошка");
+        guesses.add("кость");
+
         List<String> filtered = dict.filterWords(guesses);
 
         assertNotNull(filtered);
+        assertTrue(filtered.contains("кошка") || filtered.contains("кость") || filtered.contains("ёлка"));
     }
 }
