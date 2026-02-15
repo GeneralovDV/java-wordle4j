@@ -1,0 +1,240 @@
+{
+  "version" : 1,
+  "files" : {
+    "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java" : [ {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java:9-30",
+      "title" : "ru.yandex.practicum.WordleDictionaryTest",
+      "content" : "Класс WordleDictionaryTest.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java",
+      "startLine" : 9,
+      "endLine" : 30,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryTest",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395682
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java:11-16",
+      "title" : "ru.yandex.practicum.WordleDictionaryTest#testNormalizeWord",
+      "content" : "Метод testNormalizeWord (()). Возвращает void.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java",
+      "startLine" : 11,
+      "endLine" : 16,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryTest#testNormalizeWord",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395682
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java:INV:11",
+      "title" : "Ключевые вызовы: testNormalizeWord()",
+      "content" : "- `ru.yandex.practicum.WordleDictionary#normalize(String)`\n```\n{\n        return word.toLowerCase().replace('ё', 'е');\n    }\n```",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java",
+      "startLine" : 11,
+      "endLine" : 16,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryTest#testNormalizeWord()",
+      "tags" : [ "inline", "invocation" ],
+      "lastEditMillis" : 1770976395682
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java:18-29",
+      "title" : "ru.yandex.practicum.WordleDictionaryTest#testFilterWords",
+      "content" : "Метод testFilterWords (()). Возвращает void.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java",
+      "startLine" : 18,
+      "endLine" : 29,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryTest#testFilterWords",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395682
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java:INV:18",
+      "title" : "Ключевые вызовы: testFilterWords()",
+      "content" : "- `ru.yandex.practicum.WordleDictionary#addWord(String)`\n```\n{\n        String normalized = normalize(word);\n        if (!words.contains(normalized)) {\n            words.add(normalized);\n        }\n    }\n```\n- `java.util.List#of(E, E)`\n\n- `ru.yandex.practicum.WordleDictionary#filterWords(List<String>)`\n```\n{\n        return words.stream()\n                .filter(word -> matchesAllFeedbacks(word, guesses))\n                .collect(Collectors.toList());\n    }\n```\n- `org.junit.jupiter.api.Assertions#assertNotNull(Object)`\n```\npublic static void assertNotNull(Object actual) {\n        AssertNotNull.assertNotNull(actual);\n    }\n```",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryTest.java",
+      "startLine" : 18,
+      "endLine" : 29,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryTest#testFilterWords()",
+      "tags" : [ "inline", "invocation" ],
+      "lastEditMillis" : 1770976395682
+    } ],
+    "/Users/d.v.generalov/IdeaProjects/java-wordle4j/.github/workflows/api-tests.yml" : [ {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/.github/workflows/api-tests.yml:1-1",
+      "title" : "yaml:name",
+      "content" : "Java Tests",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/.github/workflows/api-tests.yml",
+      "startLine" : 1,
+      "endLine" : 1,
+      "symbolFqn" : null,
+      "tags" : [ "yaml", "yaml:name", "config" ],
+      "lastEditMillis" : 1770976103992
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/.github/workflows/api-tests.yml:3-4",
+      "title" : "yaml:on",
+      "content" : "pull_request:",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/.github/workflows/api-tests.yml",
+      "startLine" : 3,
+      "endLine" : 4,
+      "symbolFqn" : null,
+      "tags" : [ "yaml", "yaml:on", "config" ],
+      "lastEditMillis" : 1770976103992
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/.github/workflows/api-tests.yml:6-7",
+      "title" : "yaml:jobs",
+      "content" : "build: uses: yandex-praktikum/java-wordle4j/.github/workflows/api-tests.yml@ci",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/.github/workflows/api-tests.yml",
+      "startLine" : 6,
+      "endLine" : 7,
+      "symbolFqn" : null,
+      "tags" : [ "yaml", "yaml:jobs", "config" ],
+      "lastEditMillis" : 1770976103992
+    } ],
+    "/Users/d.v.generalov/IdeaProjects/java-wordle4j/README.md" : [ {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/README.md:1-2",
+      "title" : "java-wordle4j",
+      "content" : "Repository for homework project.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/README.md",
+      "startLine" : 1,
+      "endLine" : 2,
+      "symbolFqn" : null,
+      "tags" : [ "markdown", "doc" ],
+      "lastEditMillis" : 1770976103994
+    } ],
+    "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java" : [ {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java:14-42",
+      "title" : "ru.yandex.practicum.WordleDictionaryLoaderTest",
+      "content" : "Класс WordleDictionaryLoaderTest.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java",
+      "startLine" : 14,
+      "endLine" : 42,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryLoaderTest",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395691
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java:19-32",
+      "title" : "ru.yandex.practicum.WordleDictionaryLoaderTest#testLoadDictionaryFromFile",
+      "content" : "Метод testLoadDictionaryFromFile (()). Возвращает void.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java",
+      "startLine" : 19,
+      "endLine" : 32,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryLoaderTest#testLoadDictionaryFromFile",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395691
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java:INV:19",
+      "title" : "Ключевые вызовы: testLoadDictionaryFromFile()",
+      "content" : "- `java.nio.file.Files#createTempFile(String, String, FileAttribute<?>...)`\n\n- `java.nio.file.Files#newBufferedWriter(Path, OpenOption...)`\n\n- `java.io.Writer#write(String)`\n\n- `java.nio.file.Path#toString()`\n\n- `ru.yandex.practicum.WordleDictionaryLoader#loadDictionary(String)`\n```\n{\n        WordleDictionary dictionary = new WordleDictionary();\n\n        try (BufferedReader reader = new BufferedReader(\n                new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8))) {\n\n            String line;\n            while ((line = reader.readLine()) != null) {\n                line = line.trim();\n                if (line.length() == 5) {\n                    dictionary.addWord(line);\n                }\n…\n```",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java",
+      "startLine" : 19,
+      "endLine" : 32,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryLoaderTest#testLoadDictionaryFromFile()",
+      "tags" : [ "inline", "invocation" ],
+      "lastEditMillis" : 1770976395691
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java:34-41",
+      "title" : "ru.yandex.practicum.WordleDictionaryLoaderTest#testLoadNonExistentFile",
+      "content" : "Метод testLoadNonExistentFile (()). Возвращает void.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java",
+      "startLine" : 34,
+      "endLine" : 41,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryLoaderTest#testLoadNonExistentFile",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395691
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java:INV:34",
+      "title" : "Ключевые вызовы: testLoadNonExistentFile()",
+      "content" : "- `ru.yandex.practicum.WordleDictionaryLoader#loadDictionary(String)`\n```\n{\n        WordleDictionary dictionary = new WordleDictionary();\n\n        try (BufferedReader reader = new BufferedReader(\n                new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8))) {\n\n            String line;\n            while ((line = reader.readLine()) != null) {\n                line = line.trim();\n                if (line.length() == 5) {\n                    dictionary.addWord(line);\n                }\n…\n```\n- `org.junit.jupiter.api.Assertions#assertNotNull(Object)`\n```\npublic static void assertNotNull(Object actual) {\n        AssertNotNull.assertNotNull(actual);\n    }\n```\n- `ru.yandex.practicum.WordleDictionary#isEmpty()`\n```\n{\n        return words.isEmpty();\n    }\n```",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleDictionaryLoaderTest.java",
+      "startLine" : 34,
+      "endLine" : 41,
+      "symbolFqn" : "ru.yandex.practicum.WordleDictionaryLoaderTest#testLoadNonExistentFile()",
+      "tags" : [ "inline", "invocation" ],
+      "lastEditMillis" : 1770976395691
+    } ],
+    "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java" : [ {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:11-47",
+      "title" : "ru.yandex.practicum.WordleGameTest",
+      "content" : "Класс WordleGameTest.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 11,
+      "endLine" : 47,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395701
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:17-24",
+      "title" : "ru.yandex.practicum.WordleGameTest#setUp",
+      "content" : "Метод setUp (()). Возвращает void.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 17,
+      "endLine" : 24,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest#setUp",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395701
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:INV:17",
+      "title" : "Ключевые вызовы: setUp()",
+      "content" : "- `ru.yandex.practicum.WordleDictionary#addWord(String)`\n```\n{\n        String normalized = normalize(word);\n        if (!words.contains(normalized)) {\n            words.add(normalized);\n        }\n    }\n```",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 17,
+      "endLine" : 24,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest#setUp()",
+      "tags" : [ "inline", "invocation" ],
+      "lastEditMillis" : 1770976395701
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:26-32",
+      "title" : "ru.yandex.practicum.WordleGameTest#testCorrectGuess",
+      "content" : "Метод testCorrectGuess (()). Возвращает void.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 26,
+      "endLine" : 32,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest#testCorrectGuess",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395701
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:INV:26",
+      "title" : "Ключевые вызовы: testCorrectGuess()",
+      "content" : "- `ru.yandex.practicum.WordleGame#isPlayerWon()`\n```\n{\n        return !previousGuesses.isEmpty() && previousGuesses.get(previousGuesses.size() - 1).equals(answer);\n    }\n```",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 26,
+      "endLine" : 32,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest#testCorrectGuess()",
+      "tags" : [ "inline", "invocation" ],
+      "lastEditMillis" : 1770976395701
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:34-39",
+      "title" : "ru.yandex.practicum.WordleGameTest#testInvalidWordLength",
+      "content" : "Метод testInvalidWordLength (()). Возвращает void.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 34,
+      "endLine" : 39,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest#testInvalidWordLength",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395701
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:INV:34",
+      "title" : "Ключевые вызовы: testInvalidWordLength()",
+      "content" : "- `org.junit.jupiter.api.Assertions#assertThrows(Class<T>, Executable)`\n```\npublic static <T extends Throwable> T assertThrows(Class<T> expectedType, Executable executable) {\n        return (T)AssertThrows.assertThrows(expectedType, executable);\n    }\n```",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 34,
+      "endLine" : 39,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest#testInvalidWordLength()",
+      "tags" : [ "inline", "invocation" ],
+      "lastEditMillis" : 1770976395701
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:41-46",
+      "title" : "ru.yandex.practicum.WordleGameTest#testInvalidWordNotInDictionary",
+      "content" : "Метод testInvalidWordNotInDictionary (()). Возвращает void.",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 41,
+      "endLine" : 46,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest#testInvalidWordNotInDictionary",
+      "tags" : [ ],
+      "lastEditMillis" : 1770976395701
+    }, {
+      "id" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java:INV:41",
+      "title" : "Ключевые вызовы: testInvalidWordNotInDictionary()",
+      "content" : "- `org.junit.jupiter.api.Assertions#assertThrows(Class<T>, Executable)`\n```\npublic static <T extends Throwable> T assertThrows(Class<T> expectedType, Executable executable) {\n        return (T)AssertThrows.assertThrows(expectedType, executable);\n    }\n```",
+      "filePath" : "/Users/d.v.generalov/IdeaProjects/java-wordle4j/test/ru/yandex/practicum/WordleGameTest.java",
+      "startLine" : 41,
+      "endLine" : 46,
+      "symbolFqn" : "ru.yandex.practicum.WordleGameTest#testInvalidWordNotInDictionary()",
+      "tags" : [ "inline", "invocation" ],
+      "lastEditMillis" : 1770976395701
+    } ]
+  }
+}
